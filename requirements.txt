@@ -1,2 +1,0 @@
-colcon-common-extensions
-pytest
