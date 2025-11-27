@@ -1,0 +1,22 @@
+# These limits are used by MoveIt and augment/override the definitions in ur_description.
+# MoveIt needs them for time parametrization.
+
+joint_limits:
+  joint_1:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  joint_2:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  joint_3:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  joint_4:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  joint_5:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  joint_6:
+    has_acceleration_limits: true
+    max_acceleration: 5.0

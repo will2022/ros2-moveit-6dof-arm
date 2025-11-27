@@ -1,0 +1,14 @@
+services:
+  ros2_jazzy:
+    build: .
+    image: my_robot_ros2_jazzy
+    container_name: my_robot_workspace
+    volumes:
+      - .:/workspace
+    environment:
+      - DISPLAY=${DISPLAY}
+      - ROS_DOMAIN_ID=0
+    network_mode: host
+    stdin_open: true
+    tty: true
+    command: /bin/bash

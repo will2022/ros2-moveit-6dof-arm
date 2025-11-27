@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="my_robot">
+
+  <!-- Import ros2_control description -->
+  <xacro:include filename="$(find my_robot_description)/urdf/my_robot.ros2_control.xacro" />
+
+  <!-- Parameters -->
+  <xacro:property name="link_1_length" value="0.15" />
+  <xacro:property name="link_2_length" value="0.4" />
+  <xacro:property name="link_3_length" value="0.35" />
+  <xacro:property name="link_4_length" value="0.1" />
+  <xacro:property name="link_5_length" value="0.1" />
+  <xacro:property name="link_6_length" value="0.05" />
+  <xacro:property name="radius" value="0.05" />
+
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.1"/>
+      </geometry>
+      <material name="Gray">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.05" radius="0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="4.0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- Joint 1 -->
+  <joint name="joint_1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <origin xyz="0 0 0.025" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="150.0" velocity="3.14"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="link_1">
+    <visual>
+      <origin xyz="0 0 ${link_1_length/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${link_1_length}" radius="${radius}"/>
+      </geometry>
+      <material name="Blue">
+        <color rgba="0.0 0.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 ${link_1_length/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${link_1_length}" radius="${radius}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="3.7"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- Joint 2 -->
+  <joint name="joint_2" type="revolute">
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <origin xyz="0 0 ${link_1_length}" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.14" upper="3.14" effort="150.0" velocity="3.14"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="link_2">
+    <visual>
+      <origin xyz="0 0 ${link_2_length/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${link_2_length}" radius="${radius}"/>
+      </geometry>
+      <material name="Red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 ${link_2_length/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${link_2_length}" radius="${radius}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="8.3"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- Joint 3 -->
+  <joint name="joint_3" type="revolute">
+    <parent link="link_2"/>
+    <child link="link_3"/>
+    <origin xyz="0 0 ${link_2_length}" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.14" upper="3.14" effort="150.0" velocity="3.14"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="link_3">
+    <visual>
+      <origin xyz="0 0 ${link_3_length/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${link_3_length}" radius="${radius}"/>
+      </geometry>
+      <material name="Green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 ${link_3_length/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${link_3_length}" radius="${radius}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.4"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- Joint 4 -->
+  <joint name="joint_4" type="revolute">
+    <parent link="link_3"/>
+    <child link="link_4"/>
+    <origin xyz="0 0 ${link_3_length}" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.14" upper="3.14" effort="28.0" velocity="3.14"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="link_4">
+    <visual>
+      <origin xyz="0 0 ${link_4_length/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${link_4_length}" radius="${radius}"/>
+      </geometry>
+      <material name="Yellow">
+        <color rgba="1.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 ${link_4_length/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${link_4_length}" radius="${radius}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.2"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- Joint 5 -->
+  <joint name="joint_5" type="revolute">
+    <parent link="link_4"/>
+    <child link="link_5"/>
+    <origin xyz="0 0 ${link_4_length}" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="28.0" velocity="3.14"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="link_5">
+    <visual>
+      <origin xyz="0 0 ${link_5_length/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${link_5_length}" radius="${radius}"/>
+      </geometry>
+      <material name="Cyan">
+        <color rgba="0.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 ${link_5_length/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${link_5_length}" radius="${radius}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.2"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- Joint 6 -->
+  <joint name="joint_6" type="revolute">
+    <parent link="link_5"/>
+    <child link="link_6"/>
+    <origin xyz="0 0 ${link_5_length}" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.14" upper="3.14" effort="28.0" velocity="3.14"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="link_6">
+    <visual>
+      <origin xyz="0 0 ${link_6_length/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${link_6_length}" radius="${radius}"/>
+      </geometry>
+      <material name="Magenta">
+        <color rgba="1.0 0.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 ${link_6_length/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${link_6_length}" radius="${radius}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- Tool Frame -->
+  <joint name="tool0_joint" type="fixed">
+    <parent link="link_6"/>
+    <child link="tool0"/>
+    <origin xyz="0 0 ${link_6_length}" rpy="0 0 0"/>
+  </joint>
+
+  <link name="tool0"/>
+
+  <!-- ros2_control integration -->
+  <xacro:my_robot_ros2_control name="MyRobotFakeSystem" prefix=""/>
+
+</robot>

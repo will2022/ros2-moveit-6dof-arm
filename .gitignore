@@ -1,0 +1,35 @@
+# ROS 2 / Colcon build artifacts
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+.venv_ros2/
+*.egg-info/
+dist/
+*.egg
+
+# pyenv
+.python-version
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temporary files
+*.log
+*.tmp
